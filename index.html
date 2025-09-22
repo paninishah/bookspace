@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>virtual library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* custom button with underline on hover */
+        .btn-custom {
+            width: 90px;
+            height: 32px;
+            background-color: #646358;
+            color: white;
+            font-family: 'hind madurai', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .btn-custom::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .btn-custom:hover::after {
+            width: 100%;
+        }
+        body {
+            background-image: url('./resources/bookspace_bg.jpg');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="m-0 p-0">
+    <!-- background image -->
+    <div class="absolute inset-0">
+        <img src="./resources/bookspace_bg.jpg" alt="background" class="w-full h-full object-cover">
+        <!-- dark overlay -->
+        <div class="absolute inset-0 bg-black" style="opacity: 0.66;"></div>
+    </div>
+
+    <nav class="flex justify-between items-center p-4">
+        <!-- logo as square -->
+        <div class="w-10 h-10 bg-gray-800"></div>
+
+        <div class="flex space-x-4">
+            <button class="btn-custom">login</button>
+            <button class="btn-custom">signup</button>
+        </div>
+    </nav>
+</body>
+</html>
