@@ -1,61 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>virtual library</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;500;600&family=Montserrat:wght@400;500;600&family=Miriam+Libre:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* custom button with underline on hover */
-        .btn-custom {
-            width: 90px;
-            height: 32px;
-            background-color: #646358;
-            color: white;
-            font-family: 'hind madurai', sans-serif;
-            font-size: 20px;
-            font-weight: 500;
-            position: relative;
-        }
-
-        .btn-custom::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: white;
-            transition: width 0.3s ease;
-        }
-
-        .btn-custom:hover::after {
-            width: 100%;
-        }
-        body {
-            background-image: url('./resources/bookspace_bg.jpg');
-            background-size: cover;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>landing | bookspace</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;500;600&family=Montserrat:wght@400;500;600&family=Miriam+Libre:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('./resources/bookspace_bg.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      font-family: 'Hind Madurai', sans-serif;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.66);
+    }
+  </style>
 </head>
-<body class="m-0 p-0">
-    <!-- background image -->
-    <div class="absolute inset-0">
-        <img src="./resources/bookspace_bg.jpg" alt="background" class="w-full h-full object-cover">
-        <!-- dark overlay -->
-        <div class="absolute inset-0 bg-black" style="opacity: 0.66;"></div>
+<body class="m-0 p-0 position-relative">
+
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-dark px-4">
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand ms-3 fw-bold" href="#">bookspace</a>
     </div>
+    <div>
+      <a href="#" class="btn btn-primary me-2">login</a>
+      <a href="#" class="btn btn-outline-light">signup</a>
+    </div>
+  </nav>
 
-    <nav class="flex justify-between items-center p-4">
-        <!-- logo as square -->
-        <div class="w-10 h-10 bg-gray-800"></div>
+  <!-- Hero text -->
+  <div class="position-absolute top-50 start-0 translate-middle-y text-white px-4">
+    <h1 class="display-3 fw-bold" style="font-family:'Montserrat', sans-serif; letter-spacing: 12px;">bookspace</h1>
+    <h2 class="display-6" style="font-family: 'Miriam Libre', sans-serif;">a place where you can <span id="typed"></span> .</h2>
+  </div>
 
-        <div class="flex space-x-4">
-            <button class="btn-custom">login</button>
-            <button class="btn-custom">signup</button>
-        </div>
-    </nav>
-    <h1 class="absolute text-white font-mont font-bold text-[60px]" style="top:30%; left:4%;">bookspace</h1>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="script.js"></script>
 </body>
 </html>
