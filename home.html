@@ -9,7 +9,7 @@
     <style>
 
        h1, h2, h3, h4, h5, h6 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Montserrat', sans-serif; /*set fonts */
     }
     .subheading {
       font-family: 'Hind Madurai', sans-serif;
@@ -20,37 +20,33 @@
         .carousel-control-prev-icon,
         .carousel-control-next-icon 
         {
-            filter: invert(0%); /* black */
-            background-color: rgba(0, 0, 0, 0.5); /* optional semi-transparent dark background */
-            border-radius: 50%; /* optional round shape */
+            filter: invert(0%); 
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 50%;
             width: 40px;
             height: 40px;
         }
         body {
-        padding-top: 70px; /* adjust based on navbar height */
+        padding-top: 70px; /*to make sure it doesn't get hidden when nav is fixed */
         }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 fixed-top">
-  <!-- Left: Site name -->
   <a href="#" class="navbar-brand fw-bold" style="font-family: 'Montserrat',sans-serif;">bookspace</a>
 
-  <!-- Hamburger toggler for small screens -->
+  <!--turns into hamburger on small screens-->
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
           aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <!-- Center + Right content -->
   <div class="collapse navbar-collapse" id="navbarContent">
-    <!-- Center: Search bar -->
     <form class="mx-auto d-flex" style="width: 50%;" id="searchForm">
       <input class="form-control me-2" type="search" placeholder="search for books..." aria-label="Search" id="searchInput">
       <button class="btn btn-outline-light" type="submit">search</button>
     </form>
 
-    <!-- Right: Menu items -->
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
       <li class="nav-item">
         <a class="nav-link" href="#">explore</a>
@@ -66,12 +62,11 @@
 </nav>
 
 <div class="container mt-4" id="carouselContainer">
-
-    <!-- Bestsellers Section -->
+    
+  <!--bestsellers-->
     <h4 style="font-family: 'Hind Madurai', sans-serif;">bestsellers</h4>
     <div id="bestsellersCarousel" class="carousel slide">
       <div class="carousel-inner">
-        <!-- Book items will go here dynamically -->
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#bestsellersCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
@@ -81,7 +76,7 @@
       </button>
     </div>
 
-    <!-- Sci-Fi Section -->
+    <!--scifi-->
     <h4 style="font-family: 'Hind Madurai', sans-serif;">sci-fi</h4>
     <div id="scifiCarousel" class="carousel slide" >
       <div class="carousel-inner"></div>
@@ -93,7 +88,7 @@
       </button>
     </div>
 
-    <!-- Romance Section -->
+    <!--romance-->
     <h4 style="font-family: 'Hind Madurai', sans-serif;">romance</h4>
     <div id="romanceCarousel" class="carousel slide">
       <div class="carousel-inner"></div>
@@ -105,7 +100,7 @@
       </button>
     </div>
 
-    <!-- Thrillers Section -->
+    <!--thriller-->
     <h4 style="font-family: 'Hind Madurai', sans-serif;">thriller</h4>
     <div id="thrillersCarousel" class="carousel slide">
       <div class="carousel-inner"></div>
@@ -117,7 +112,7 @@
       </button>
     </div>
 
-    <!-- Adventure Section -->
+    <!--adventure-->
     <h4 style="font-family: 'Hind Madurai', sans-serif;">adventure</h4>
     <div id="adventureCarousel" class="carousel slide">
       <div class="carousel-inner"></div>
@@ -131,7 +126,7 @@
 
   </div>
 
-  <!-- Book Modal -->
+<!--modal (bootstrap default)-->
 <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
@@ -142,10 +137,10 @@
       <div class="modal-body d-flex gap-4">
         <img id="bookCover" src="" alt="Book cover" style="width:150px; height:220px; object-fit:cover;">
         <div>
-          <h6 id="bookAuthor" style="font-family:'Hind Madurai', sans-serif;">Author</h6>
-          <p id="bookDescription" style="font-family:'Miriam Libre', sans-serif;">Description...</p>
-          <button id="addToFavorites" class="btn btn-sm btn-primary me-2">Add to Favorites</button>
-          <button id="addNote" class="btn btn-sm btn-outline-secondary">Add Note</button>
+          <h6 id="bookAuthor" style="font-family:'Hind Madurai', sans-serif;">author</h6>
+          <p id="bookDescription" style="font-family:'Miriam Libre', sans-serif;">(description here)</p>
+          <button id="addToFavorites" class="btn btn-sm btn-primary me-2">i like this</button>
+          <button id="addNote" class="btn btn-sm btn-outline-secondary">add note</button>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-// ----- INITIALIZE LOCALSTORAGE -----
+//localstorage
 if (!localStorage.getItem("favorites")) localStorage.setItem("favorites", JSON.stringify([]));
 if (!localStorage.getItem("notes")) localStorage.setItem("notes", JSON.stringify([]));
 if (!localStorage.getItem("createdBooks")) localStorage.setItem("createdBooks", JSON.stringify([]));
@@ -7,11 +7,10 @@ const favoritesContainer = document.getElementById("favoritesContainer");
 const notesContainer = document.getElementById("notesContainer");
 const createdBooksContainer = document.getElementById("createdBooksContainer");
 
-// ----- LOAD FAVORITES -----
 function loadFavorites() {
     const favs = JSON.parse(localStorage.getItem("favorites")) || [];
     if (!favs.length) {
-        favoritesContainer.innerHTML = "<p>No favorites yet.</p>";
+        favoritesContainer.innerHTML = "<p>no favourites yet.</p>";
         return;
     }
 
@@ -22,14 +21,14 @@ function loadFavorites() {
                 <div class="card-body p-2">
                     <p class="card-title small text-truncate mb-0">${book.title}</p>
                     <p class="card-text small text-muted mb-0">${book.author}</p>
-                    <button class="btn btn-sm btn-danger remove-fav" data-index="${i}">Remove</button>
+                    <button class="btn btn-sm btn-danger remove-fav" data-index="${i}">i dont like this anymore :(</button>
                 </div>
             </div>
         </div>
     `).join('');
 }
 
-// REMOVE FAVORITE
+//delete
 favoritesContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("remove-fav")) {
         let favs = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -39,11 +38,10 @@ favoritesContainer.addEventListener("click", (e) => {
     }
 });
 
-// ----- LOAD NOTES -----
 function loadNotes() {
     const notes = JSON.parse(localStorage.getItem("notes")) || [];
     if (!notes.length) {
-        notesContainer.innerHTML = "<p>No notes yet.</p>";
+        notesContainer.innerHTML = "<p>you haven't noted anything yet.</p>";
         return;
     }
 
@@ -53,14 +51,14 @@ function loadNotes() {
                 <div class="card-body">
                     <h6 class="card-title">${noteObj.title}</h6>
                     <p class="card-text">${noteObj.note}</p>
-                    <button class="btn btn-sm btn-danger delete-note" data-index="${i}">Delete</button>
+                    <button class="btn btn-sm btn-danger delete-note" data-index="${i}">delete note</button>
                 </div>
             </div>
         </div>
     `).join('');
 }
 
-// DELETE NOTE
+//delete
 notesContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete-note")) {
         let notes = JSON.parse(localStorage.getItem("notes")) || [];
@@ -70,24 +68,24 @@ notesContainer.addEventListener("click", (e) => {
     }
 });
 
-// ----- ADD NOTE FROM MODAL -----
+//add note when modal button 
 document.getElementById("addNote")?.addEventListener("click", () => {
     const title = document.getElementById("bookModalLabel").textContent;
-    const note = prompt("Write your note for this book:");
+    const note = prompt("write your notes:");
     if (!note) return;
 
     let notes = JSON.parse(localStorage.getItem("notes")) || [];
     notes.push({ title, note });
     localStorage.setItem("notes", JSON.stringify(notes));
     loadNotes();
-    alert("Note saved!");
+    alert("got it!");
 });
 
-// ----- LOAD CREATED BOOKS -----
+
 function loadCreatedBooks() {
     const created = JSON.parse(localStorage.getItem("createdBooks")) || [];
     if (!created.length) {
-        createdBooksContainer.innerHTML = "<p>No books added yet.</p>";
+        createdBooksContainer.innerHTML = "<p>no books created yet.</p>";
         return;
     }
 
@@ -105,7 +103,7 @@ function loadCreatedBooks() {
     `).join('');
 }
 
-// DELETE CREATED BOOK
+//delete
 createdBooksContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete-created")) {
         let created = JSON.parse(localStorage.getItem("createdBooks")) || [];
@@ -115,7 +113,7 @@ createdBooksContainer.addEventListener("click", (e) => {
     }
 });
 
-// ADD NEW CREATED BOOK
+//add created book to profile
 document.getElementById("createBookForm")?.addEventListener("submit", (e) => {
     e.preventDefault();
     const title = document.getElementById("newBookTitle").value.trim();
@@ -132,7 +130,7 @@ document.getElementById("createBookForm")?.addEventListener("submit", (e) => {
     loadCreatedBooks();
 });
 
-// ----- ADD TO FAVORITES FROM MODAL -----
+//add to favs from modal button
 document.getElementById("addToFavorites")?.addEventListener("click", () => {
     const title = document.getElementById("bookModalLabel").textContent;
     const author = document.getElementById("bookAuthor").textContent;
@@ -143,9 +141,9 @@ document.getElementById("addToFavorites")?.addEventListener("click", () => {
         favs.push({ title, author, cover });
         localStorage.setItem("favorites", JSON.stringify(favs));
         loadFavorites();
-        alert("Added to favorites!");
+        alert("added to favs!");
     } else {
-        alert("Already in favorites.");
+        alert("you like this lots it seems (it's already in your favourites)");
     }
 });
 

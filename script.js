@@ -1,4 +1,4 @@
-// ----- TYPED EFFECT -----
+//to use typed ONLY if it exists on the page 
 const typedElement = document.querySelector("#typed");
 if (typedElement) {
     new Typed("#typed", {
@@ -10,7 +10,7 @@ if (typedElement) {
     });
 }
 
-// ----- GENRES AND CAROUSELS -----
+//carousel names
 const genres = [
     { name: "bestsellers", subject: "bestsellers", carouselId: "bestsellersCarousel" },
     { name: "sci-fi", subject: "science_fiction", carouselId: "scifiCarousel" },
@@ -19,7 +19,7 @@ const genres = [
     { name: "adventure", subject: "adventure", carouselId: "adventureCarousel" }
 ];
 
-async function fetchBooks(subject, limit = 12) {
+async function fetchBooks(subject, limit = 10) {
     try {
         const res = await fetch(`https://openlibrary.org/subjects/${subject}.json?limit=${limit}`);
         const data = await res.json();
@@ -65,6 +65,7 @@ function createCarouselItem(books, isActive = false) {
     return item;
 }
 
+//add books to carousel
 async function populateCarousels() {
     for (let genre of genres) {
         const books = await fetchBooks(genre.subject);
@@ -91,10 +92,9 @@ async function populateCarousels() {
     }
 }
 
-// ----- DOM CONTENT LOADED -----
 document.addEventListener("DOMContentLoaded", populateCarousels);
 
-// ----- SEARCH FUNCTIONALITY -----
+//search stuff
 const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
 const carouselContainer = document.getElementById("carouselContainer");
@@ -176,7 +176,7 @@ document.addEventListener("click", (e) => {
     }
 });
 
-// ----- MODAL AND FAVORITE / NOTE -----
+//modal button interactions
 document.addEventListener("click", (e) => {
     const card = e.target.closest(".book-card");
     if (card) {
